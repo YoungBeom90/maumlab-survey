@@ -4,9 +4,10 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { maumlabDb } from 'src/config/db-connection-config';
 import { SurveyModule } from 'src/domain/survey/survey.module';
+import { AnswerModule } from 'src/domain/survey/answer/answer.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(maumlabDb), SurveyModule],
+  imports: [TypeOrmModule.forRoot(maumlabDb), SurveyModule, AnswerModule],
   controllers: [AppController],
   providers: [AppService],
 })

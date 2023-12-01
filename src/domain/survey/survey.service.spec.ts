@@ -23,6 +23,6 @@ describe('SurveyServiceTest', () => {
   });
 
   it('findAllSurvey', async function () {
-    await service.findAllSurvey();
+    await service.findAll();
   });
 });
