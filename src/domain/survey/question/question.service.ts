@@ -8,8 +8,8 @@ import {
   DefaultServerException,
   QueryFailedException,
 } from 'src/util/exceptions';
-import { UpdateChoiceDto } from 'src/domain/survey/question/choice/dto/update-choice.dto';
-import { ChoiceService } from 'src/domain/survey/question/choice/choice.service';
+import { UpdateChoiceDto } from 'src/domain/survey/choice/dto/update-choice.dto';
+import { ChoiceService } from 'src/domain/survey/choice/choice.service';
 
 @Injectable()
 export class QuestionService {

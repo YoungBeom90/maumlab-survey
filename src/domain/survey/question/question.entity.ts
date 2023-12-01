@@ -7,9 +7,9 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Choice } from 'src/domain/survey/question/choice/choice.entity';
+import { Choice } from 'src/domain/survey/choice/choice.entity';
 import { Survey } from 'src/domain/survey/survey.entity';
-import { AnswerItem } from 'src/domain/survey/answer/answer-item/answer-item.entity';
+import { AnswerItem } from 'src/domain/answer/answer-item/answer-item.entity';
 import { CreateQuestionDto } from 'src/domain/survey/question/dto/create-question.dto';
 import { isNotEmpty } from 'class-validator';
 import { UpdateQuestionDto } from 'src/domain/survey/question/dto/update-question.dto';

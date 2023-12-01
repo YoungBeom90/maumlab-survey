@@ -6,9 +6,9 @@ import {
   ParseIntPipe,
   Post,
 } from '@nestjs/common';
-import { AnswerService } from 'src/domain/survey/answer/answer.service';
-import { AnswerResponseDto } from 'src/domain/survey/answer/dto/answer-response.dto';
-import { CreateAnswerDto } from 'src/domain/survey/answer/dto/create-answer.dto';
+import { AnswerService } from 'src/domain/answer/answer.service';
+import { AnswerResponseDto } from 'src/domain/answer/dto/answer-response.dto';
+import { CreateAnswerDto } from 'src/domain/answer/dto/create-answer.dto';
 
 @Controller('answers')
 export class AnswerController {

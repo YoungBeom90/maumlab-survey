@@ -7,7 +7,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { Question } from 'src/domain/survey/question/question.entity';
-import { Answer } from 'src/domain/survey/answer/answer.entity';
+import { Answer } from 'src/domain/answer/answer.entity';
 import { CreateSurveyDto } from 'src/domain/survey/dto/create-survey.dto';
 import { isNotEmpty } from 'class-validator';
 import { UpdateSurveyDto } from 'src/domain/survey/dto/update-survey.dto';

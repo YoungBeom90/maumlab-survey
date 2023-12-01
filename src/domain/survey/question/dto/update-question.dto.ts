@@ -1,5 +1,5 @@
 import { IsNotEmpty, IsOptional } from 'class-validator';
-import { UpdateChoiceDto } from 'src/domain/survey/question/choice/dto/update-choice.dto';
+import { UpdateChoiceDto } from 'src/domain/survey/choice/dto/update-choice.dto';
 
 export class UpdateQuestionDto {
   @IsOptional()

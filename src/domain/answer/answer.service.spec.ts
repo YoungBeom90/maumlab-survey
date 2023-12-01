@@ -1,4 +1,4 @@
-import { AnswerService } from 'src/domain/survey/answer/answer.service';
+import { AnswerService } from 'src/domain/answer/answer.service';
 import { Test, TestingModule } from '@nestjs/testing';
 import { EntityModule } from 'src/domain/entity.module';
 

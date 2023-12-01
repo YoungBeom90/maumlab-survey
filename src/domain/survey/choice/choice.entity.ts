@@ -8,9 +8,9 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { Question } from 'src/domain/survey/question/question.entity';
-import { AnswerItem } from 'src/domain/survey/answer/answer-item/answer-item.entity';
-import { CreateChoiceDto } from 'src/domain/survey/question/choice/dto/create-choice.dto';
-import { UpdateChoiceDto } from 'src/domain/survey/question/choice/dto/update-choice.dto';
+import { AnswerItem } from 'src/domain/answer/answer-item/answer-item.entity';
+import { CreateChoiceDto } from 'src/domain/survey/choice/dto/create-choice.dto';
+import { UpdateChoiceDto } from 'src/domain/survey/choice/dto/update-choice.dto';
 
 @Entity()
 export class Choice {

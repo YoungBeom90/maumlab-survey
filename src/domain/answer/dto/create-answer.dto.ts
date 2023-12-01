@@ -1,5 +1,5 @@
 import { IsNotEmpty } from 'class-validator';
-import { CreateAnswerItemDto } from 'src/domain/survey/answer/answer-item/dto/create-answer-item.dto';
+import { CreateAnswerItemDto } from 'src/domain/answer/answer-item/dto/create-answer-item.dto';
 
 export class CreateAnswerDto {
   @IsNotEmpty()

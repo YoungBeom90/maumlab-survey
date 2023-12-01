@@ -1,4 +1,4 @@
-import { AnswerItem } from 'src/domain/survey/answer/answer-item/answer-item.entity';
+import { AnswerItem } from 'src/domain/answer/answer-item/answer-item.entity';
 
 export class AnswerItemResponseDto {
   id: number;

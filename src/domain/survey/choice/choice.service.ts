@@ -1,8 +1,8 @@
 import { HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Choice } from 'src/domain/survey/question/choice/choice.entity';
+import { Choice } from 'src/domain/survey/choice/choice.entity';
 import { QueryFailedError, Repository } from 'typeorm';
-import { UpdateChoiceDto } from 'src/domain/survey/question/choice/dto/update-choice.dto';
+import { UpdateChoiceDto } from 'src/domain/survey/choice/dto/update-choice.dto';
 import { precondition } from 'src/util/precondition';
 import {
   DefaultServerException,

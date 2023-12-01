@@ -11,7 +11,7 @@ import {
 import { UpdateSurveyDto } from 'src/domain/survey/dto/update-survey.dto';
 import { UpdateQuestionDto } from 'src/domain/survey/question/dto/update-question.dto';
 import { QuestionService } from 'src/domain/survey/question/question.service';
-import { UpdateChoiceDto } from 'src/domain/survey/question/choice/dto/update-choice.dto';
+import { UpdateChoiceDto } from 'src/domain/survey/choice/dto/update-choice.dto';
 
 @Injectable()
 export class SurveyService {

@@ -14,7 +14,7 @@ import { UpdateSurveyDto } from 'src/domain/survey/dto/update-survey.dto';
 import { SurveyResponseDto } from 'src/domain/survey/dto/survey-response.dto';
 import { isNil } from '@nestjs/common/utils/shared.utils';
 import { UpdateQuestionDto } from 'src/domain/survey/question/dto/update-question.dto';
-import { UpdateChoiceDto } from 'src/domain/survey/question/choice/dto/update-choice.dto';
+import { UpdateChoiceDto } from 'src/domain/survey/choice/dto/update-choice.dto';
 
 @Controller('surveys')
 export class SurveyController {

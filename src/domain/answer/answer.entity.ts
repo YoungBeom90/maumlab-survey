@@ -6,9 +6,9 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { AnswerItem } from 'src/domain/survey/answer/answer-item/answer-item.entity';
+import { AnswerItem } from 'src/domain/answer/answer-item/answer-item.entity';
 import { Survey } from 'src/domain/survey/survey.entity';
-import { CreateAnswerDto } from 'src/domain/survey/answer/dto/create-answer.dto';
+import { CreateAnswerDto } from 'src/domain/answer/dto/create-answer.dto';
 import { isNotEmpty } from 'class-validator';
 
 @Entity()

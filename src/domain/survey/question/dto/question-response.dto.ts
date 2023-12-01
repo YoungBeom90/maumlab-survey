@@ -1,4 +1,4 @@
-import { ChoiceResponseDto } from 'src/domain/survey/question/choice/dto/choice-response.dto';
+import { ChoiceResponseDto } from 'src/domain/survey/choice/dto/choice-response.dto';
 import { Question } from 'src/domain/survey/question/question.entity';
 
 export class QuestionResponseDto {

@@ -7,9 +7,9 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { Question } from 'src/domain/survey/question/question.entity';
-import { Choice } from 'src/domain/survey/question/choice/choice.entity';
-import { Answer } from 'src/domain/survey/answer/answer.entity';
-import { CreateAnswerItemDto } from 'src/domain/survey/answer/answer-item/dto/create-answer-item.dto';
+import { Choice } from 'src/domain/survey/choice/choice.entity';
+import { Answer } from 'src/domain/answer/answer.entity';
+import { CreateAnswerItemDto } from 'src/domain/answer/answer-item/dto/create-answer-item.dto';
 
 @Entity()
 export class AnswerItem {

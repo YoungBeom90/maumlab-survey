@@ -1,4 +1,4 @@
-import { Choice } from 'src/domain/survey/question/choice/choice.entity';
+import { Choice } from 'src/domain/survey/choice/choice.entity';
 
 export class ChoiceResponseDto {
   id: number;
