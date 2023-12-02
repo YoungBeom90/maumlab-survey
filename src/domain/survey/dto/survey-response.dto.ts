@@ -1,4 +1,4 @@
-import { QuestionResponseDto } from 'src/domain/survey/question/dto/question-response.dto';
+import { QuestionResponseDto } from 'src/domain/question/dto/question-response.dto';
 import { Survey } from 'src/domain/survey/survey.entity';
 
 export class SurveyResponseDto {
@@ -10,9 +10,11 @@ export class SurveyResponseDto {
     const dto = new SurveyResponseDto();
     dto.id = survey.id;
     dto.surveyName = survey.surveyName;
-    dto.questions = survey.questions.map((question) =>
-      QuestionResponseDto.from(question),
-    );
+    if (dto.questions && dto.questions.length) {
+      dto.questions = survey.questions.map((question) =>
+        QuestionResponseDto.from(question),
+      );
+    }
     return dto;
   }
 }

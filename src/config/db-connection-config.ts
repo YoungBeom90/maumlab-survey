@@ -12,5 +12,5 @@ export const maumlabDb: TypeOrmModuleOptions = {
   namingStrategy: new SnakeNamingStrategy(),
   synchronize: true,
   autoLoadEntities: true,
-  logging: ['info', 'error'],
+  logging: true,
 };

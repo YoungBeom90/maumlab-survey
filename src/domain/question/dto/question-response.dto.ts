@@ -1,5 +1,5 @@
-import { ChoiceResponseDto } from 'src/domain/survey/choice/dto/choice-response.dto';
-import { Question } from 'src/domain/survey/question/question.entity';
+import { ChoiceResponseDto } from 'src/domain/choice/dto/choice-response.dto';
+import { Question } from 'src/domain/question/question.entity';
 
 export class QuestionResponseDto {
   id: number;
@@ -12,9 +12,11 @@ export class QuestionResponseDto {
     dto.id = question.id;
     dto.sequence = question.sequence;
     dto.content = question.content;
-    dto.choices = question.choices.map((choice) =>
-      ChoiceResponseDto.from(choice),
-    );
+    if (dto.choices && dto.choices.length) {
+      dto.choices = question.choices.map((choice) =>
+        ChoiceResponseDto.from(choice),
+      );
+    }
     return dto;
   }
 }

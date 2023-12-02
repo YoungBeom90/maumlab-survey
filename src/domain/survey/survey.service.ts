@@ -9,9 +9,7 @@ import {
   QueryFailedException,
 } from 'src/util/exceptions';
 import { UpdateSurveyDto } from 'src/domain/survey/dto/update-survey.dto';
-import { UpdateQuestionDto } from 'src/domain/survey/question/dto/update-question.dto';
-import { QuestionService } from 'src/domain/survey/question/question.service';
-import { UpdateChoiceDto } from 'src/domain/survey/choice/dto/update-choice.dto';
+import { QuestionService } from 'src/domain/question/question.service';
 
 @Injectable()
 export class SurveyService {
@@ -21,16 +19,26 @@ export class SurveyService {
     private questionService: QuestionService,
   ) {}
 
-  async create(dto: CreateSurveyDto) {
-    const foundSurvey = await this.surveyRepository.findOneBy({
-      surveyCode: dto.surveyCode,
+  async findOneById(id: number) {
+    return await this.surveyRepository.findOneBy({ id });
+  }
+
+  async findOneByIdWithRelations(id: number) {
+    return await this.surveyRepository.findOne({
+      relations: ['questions', 'questions.choices'],
+      where: { id },
     });
-    precondition(
-      !foundSurvey,
-      HttpStatus.CONFLICT,
-      'Already exists survey code.',
-    );
-    await this.save(Survey.create(dto));
+  }
+
+  async findOneBySurveyCodeWithRelations(surveyCode: string) {
+    return await this.surveyRepository.findOne({
+      relations: ['questions', 'questions.choices'],
+      where: { surveyCode },
+    });
+  }
+
+  async findAll() {
+    return await this.surveyRepository.find();
   }
 
   async save(survey: Survey) {
@@ -45,39 +53,39 @@ export class SurveyService {
     }
   }
 
-  async findOneById(id: number) {
-    return await this.surveyRepository.findOneBy({ id });
+  async create(dto: CreateSurveyDto) {
+    const foundSurvey = await this.surveyRepository.findOneBy({
+      surveyCode: dto.surveyCode,
+    });
+    precondition(
+      !foundSurvey,
+      HttpStatus.CONFLICT,
+      'Already exists survey code.',
+    );
+    await this.save(Survey.create(dto));
   }
 
-  async findOneBySurveyCode(surveyCode: string) {
-    return await this.surveyRepository.findOneBy({ surveyCode });
-  }
-
-  async findAll() {
-    return await this.surveyRepository.find();
-  }
-
-  async update(id: number, dto: UpdateSurveyDto) {
+  async updateById(id: number, dto: UpdateSurveyDto) {
     const survey = await this.findOneById(id);
     precondition(survey, HttpStatus.NOT_FOUND, 'Not found survey by id');
     await this.save(survey.update(dto));
   }
 
-  async updateQuestion(id: number, questionId: number, dto: UpdateQuestionDto) {
-    const survey = await this.findOneById(id);
+  async deleteWithChildren(id: number) {
+    const survey = await this.findOneByIdWithRelations(id);
     precondition(survey, HttpStatus.NOT_FOUND, 'Not found survey by id');
 
-    await this.questionService.update(questionId, dto);
-  }
-
-  async updateChoice(
-    id: number,
-    questionId: number,
-    choiceId: number,
-    dto: UpdateChoiceDto,
-  ) {
-    const survey = await this.findOneById(id);
-    precondition(survey, HttpStatus.NOT_FOUND, 'Not found survey by id');
-    await this.questionService.updateChoice(questionId, choiceId, dto);
+    try {
+      if (survey.questions && survey.questions.length) {
+        await this.questionService.deleteAll(survey.questions);
+      }
+      await this.surveyRepository.remove(survey);
+    } catch (e) {
+      if (e instanceof QueryFailedError) {
+        console.log('@@@ QueryFailedError!!');
+        QueryFailedException(e.query, e.message);
+      }
+      DefaultServerException(e.message);
+    }
   }
 }

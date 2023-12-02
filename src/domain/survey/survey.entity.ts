@@ -6,10 +6,9 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Question } from 'src/domain/survey/question/question.entity';
+import { Question } from 'src/domain/question/question.entity';
 import { Answer } from 'src/domain/answer/answer.entity';
 import { CreateSurveyDto } from 'src/domain/survey/dto/create-survey.dto';
-import { isNotEmpty } from 'class-validator';
 import { UpdateSurveyDto } from 'src/domain/survey/dto/update-survey.dto';
 
 @Entity()
@@ -31,7 +30,6 @@ export class Survey {
 
   @OneToMany(() => Question, (q) => q.survey, {
     cascade: true,
-    eager: true,
   })
   questions: Question[];
 
@@ -42,15 +40,19 @@ export class Survey {
     const entity = new Survey();
     entity.surveyCode = dto.surveyCode;
     entity.surveyName = dto.surveyName;
-    if (isNotEmpty(dto.questions) && dto.questions.length) {
+    if (dto.questions && dto.questions.length) {
       entity.questions = dto.questions.map((qDto) => Question.create(qDto));
     }
     return entity;
   }
 
   update(dto: UpdateSurveyDto) {
-    this.surveyCode = dto.surveyCode;
-    this.surveyName = dto.surveyName;
+    if (dto.surveyCode) {
+      this.surveyCode = dto.surveyCode;
+    }
+    if (dto.surveyName) {
+      this.surveyName = dto.surveyName;
+    }
     return this;
   }
 }

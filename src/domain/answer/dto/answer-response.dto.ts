@@ -1,4 +1,4 @@
-import { AnswerItemResponseDto } from 'src/domain/answer/answer-item/dto/answer-item-response.dto';
+import { AnswerItemResponseDto } from 'src/domain/answer-item/dto/answer-item-response.dto';
 import { Answer } from 'src/domain/answer/answer.entity';
 
 export class AnswerResponseDto {

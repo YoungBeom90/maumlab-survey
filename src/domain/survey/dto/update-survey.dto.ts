@@ -1,11 +1,6 @@
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsString } from 'class-validator';
 
 export class UpdateSurveyDto {
-  @IsNotEmpty()
-  @IsString()
-  surveyCode: string;
-
-  @IsNotEmpty()
-  @IsString()
-  surveyName: string;
+  @IsString() surveyCode: string;
+  @IsString() surveyName: string;
 }

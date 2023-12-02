@@ -6,10 +6,9 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { AnswerItem } from 'src/domain/answer/answer-item/answer-item.entity';
+import { AnswerItem } from 'src/domain/answer-item/answer-item.entity';
 import { Survey } from 'src/domain/survey/survey.entity';
 import { CreateAnswerDto } from 'src/domain/answer/dto/create-answer.dto';
-import { isNotEmpty } from 'class-validator';
 
 @Entity()
 export class Answer {
@@ -24,17 +23,16 @@ export class Answer {
 
   @OneToMany(() => AnswerItem, (ai) => ai.answer, {
     cascade: true,
-    eager: true,
   })
   answerItems: AnswerItem[];
 
-  @ManyToOne(() => Survey, (s) => s.answers, { eager: true })
+  @ManyToOne(() => Survey, (s) => s.answers)
   survey: Survey;
 
   static create(dto: CreateAnswerDto) {
     const answer = new Answer();
     answer.surveyId = dto.surveyId;
-    if (isNotEmpty(answer.answerItems) && answer.answerItems.length) {
+    if (dto.answerItems && dto.answerItems.length) {
       answer.answerItems = dto.answerItems.map((itemDto) =>
         AnswerItem.create(itemDto),
       );

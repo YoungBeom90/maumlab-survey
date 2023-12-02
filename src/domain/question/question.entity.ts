@@ -7,12 +7,11 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Choice } from 'src/domain/survey/choice/choice.entity';
+import { Choice } from 'src/domain/choice/choice.entity';
 import { Survey } from 'src/domain/survey/survey.entity';
-import { AnswerItem } from 'src/domain/answer/answer-item/answer-item.entity';
-import { CreateQuestionDto } from 'src/domain/survey/question/dto/create-question.dto';
-import { isNotEmpty } from 'class-validator';
-import { UpdateQuestionDto } from 'src/domain/survey/question/dto/update-question.dto';
+import { AnswerItem } from 'src/domain/answer-item/answer-item.entity';
+import { CreateQuestionDto } from 'src/domain/question/dto/create-question.dto';
+import { UpdateQuestionDto } from 'src/domain/question/dto/update-question.dto';
 
 @Entity()
 export class Question {
@@ -34,7 +33,7 @@ export class Question {
   @UpdateDateColumn({ nullable: true })
   updatedAt: Date;
 
-  @OneToMany(() => Choice, (c) => c.question, { cascade: true, eager: true })
+  @OneToMany(() => Choice, (c) => c.question, { cascade: true })
   choices: Choice[];
 
   @OneToMany(() => AnswerItem, (a) => a.question)
@@ -47,15 +46,20 @@ export class Question {
     const entity = new Question();
     entity.sequence = dto.sequence;
     entity.content = dto.content;
-    if (isNotEmpty(dto.choices) && dto.choices.length) {
+    if (dto.choices && dto.choices.length) {
       entity.choices = dto.choices.map((cDto) => Choice.create(cDto));
     }
     return entity;
   }
 
   update(dto: UpdateQuestionDto) {
-    this.sequence = dto.sequence;
-    this.content = dto.content;
+    if (dto.sequence) {
+      this.sequence = dto.sequence;
+    }
+
+    if (dto.content) {
+      this.content = dto.content;
+    }
     return this;
   }
 }

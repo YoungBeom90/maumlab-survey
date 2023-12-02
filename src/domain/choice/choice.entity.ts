@@ -7,10 +7,10 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Question } from 'src/domain/survey/question/question.entity';
-import { AnswerItem } from 'src/domain/answer/answer-item/answer-item.entity';
-import { CreateChoiceDto } from 'src/domain/survey/choice/dto/create-choice.dto';
-import { UpdateChoiceDto } from 'src/domain/survey/choice/dto/update-choice.dto';
+import { Question } from 'src/domain/question/question.entity';
+import { AnswerItem } from 'src/domain/answer-item/answer-item.entity';
+import { CreateChoiceDto } from 'src/domain/choice/dto/create-choice.dto';
+import { UpdateChoiceDto } from 'src/domain/choice/dto/update-choice.dto';
 
 @Entity()
 export class Choice {
@@ -50,9 +50,15 @@ export class Choice {
   }
 
   update(dto: UpdateChoiceDto) {
-    this.sequence = dto.sequence;
-    this.content = dto.content;
-    this.score = dto.score;
+    if (dto.sequence) {
+      this.sequence = dto.sequence;
+    }
+    if (dto.content) {
+      this.content = dto.content;
+    }
+    if (dto.score) {
+      this.score = dto.score;
+    }
     return this;
   }
 }

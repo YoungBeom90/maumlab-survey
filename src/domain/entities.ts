@@ -1,7 +1,5 @@
-import { Survey } from 'src/domain/survey/survey.entity';
-import { Question } from 'src/domain/survey/question/question.entity';
-import { Choice } from 'src/domain/survey/choice/choice.entity';
-import { Answer } from 'src/domain/answer/answer.entity';
-import { AnswerItem } from 'src/domain/answer/answer-item/answer-item.entity';
-
-export const ENTITIES = [Survey, Question, Choice, Answer, AnswerItem];
+export { Survey } from 'src/domain/survey/survey.entity';
+export { Question } from 'src/domain/question/question.entity';
+export { Choice } from 'src/domain/choice/choice.entity';
+export { Answer } from 'src/domain/answer/answer.entity';
+export { AnswerItem } from 'src/domain/answer-item/answer-item.entity';

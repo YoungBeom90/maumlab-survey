@@ -1,13 +1,17 @@
-import { CreateQuestionDto } from 'src/domain/survey/question/dto/create-question.dto';
-import { IsNotEmpty, IsOptional } from 'class-validator';
+import { CreateQuestionDto } from 'src/domain/question/dto/create-question.dto';
+import { IsNotEmpty, IsString } from 'class-validator';
+import { Type } from 'class-transformer';
 
 export class CreateSurveyDto {
   @IsNotEmpty()
+  @IsString()
   surveyCode: string;
 
   @IsNotEmpty()
+  @IsString()
   surveyName: string;
 
-  @IsOptional()
+  @IsNotEmpty({ each: true })
+  @Type(() => CreateQuestionDto)
   questions: CreateQuestionDto[];
 }
