@@ -48,7 +48,7 @@ export class AnswerService {
         'answerItems',
         'answerItems.question',
         'answerItems.choice',
-        'answer.survey',
+        'survey',
       ],
     });
   }

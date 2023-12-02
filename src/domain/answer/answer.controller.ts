@@ -12,6 +12,7 @@ import { AnswerService } from 'src/domain/answer/answer.service';
 import { AnswerResponseDto } from 'src/domain/answer/dto/answer-response.dto';
 import { CreateAnswerDto } from 'src/domain/answer/dto/create-answer.dto';
 import { UpdateAnswerItemDto } from 'src/domain/answer-item/dto/update-answer-item.dto';
+import { isNil } from '@nestjs/common/utils/shared.utils';
 
 @Controller('answers')
 export class AnswerController {
@@ -20,6 +21,9 @@ export class AnswerController {
   @Get(':id')
   async findOne(@Param('id', ParseIntPipe) id: number) {
     const answer = await this.answerService.findOneByIdWithRelations(id);
+    if (isNil(answer)) {
+      return;
+    }
     return AnswerResponseDto.from(answer);
   }
 
