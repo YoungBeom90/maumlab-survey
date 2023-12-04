@@ -1,0 +1,14 @@
+version: '3'
+services:
+  database:
+    image: postgres
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data/postgres/:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: maumlab
+      POSTGRES_PASSWORD: maumlab!
+      POSTGRES_DATABASE: maumlab
+    restart: always
