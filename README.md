@@ -1,5 +1,5 @@
 <p>
-  <a href="https://www.maumlab.co.kr/" target="blank"><img src="https://pds.saramin.co.kr/company/logo/202112/17/r491ac_33li-gdlilb_logo.jpg" style="background-color:white" alt="Nest Logo" /></a>
+  <a href="https://www.maumlab.co.kr/" target="blank"><img src="https://pds.saramin.co.kr/company/logo/202112/17/r491ac_33li-gdlilb_logo.jpg" alt="Maumlab Logo" /></a>
 </p>
 
 ## 실행 환경설정 ( 순서대로 진행해주세요 ‼️ )
