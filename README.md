@@ -5,25 +5,19 @@
 ## 실행 환경설정 ( 순서대로 진행해주세요 ‼️ )
 
 ## Installation
-> 도커 설치 설치 후 실행 👉 https://www.docker.com/products/docker-desktop/
-```bash 
-$ docker pull postgres
-```
+> 도커 설치 후 실행 👉 https://www.docker.com/products/docker-desktop/
 ```html
-Repository 내에서 아래 명령어로 docker compose 파일 실행
+터미널에서 pull 받은 폴더경로로 이동, 아래 명령어로 docker compose 파일 실행
 ```
 ```bash
-$ docker-compose up -d
+$ docker-compose up
 ```
 ```bash
 $ npm install
 ```
 
-
 ## Running the app
-
 ```bash
-# development
 $ npm run start
 ```
 
