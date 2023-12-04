@@ -12,7 +12,7 @@ export class QuestionResponseDto {
     dto.id = question.id;
     dto.sequence = question.sequence;
     dto.content = question.content;
-    if (dto.choices && dto.choices.length) {
+    if (question.choices && question.choices.length) {
       dto.choices = question.choices.map((choice) =>
         ChoiceResponseDto.from(choice),
       );

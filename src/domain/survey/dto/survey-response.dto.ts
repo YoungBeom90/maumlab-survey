@@ -10,7 +10,7 @@ export class SurveyResponseDto {
     const dto = new SurveyResponseDto();
     dto.id = survey.id;
     dto.surveyName = survey.surveyName;
-    if (dto.questions && dto.questions.length) {
+    if (survey.questions && survey.questions.length) {
       dto.questions = survey.questions.map((question) =>
         QuestionResponseDto.from(question),
       );

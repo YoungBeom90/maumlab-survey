@@ -1,0 +1,543 @@
+{
+	"info": {
+		"_postman_id": "ad181cdd-335b-4e60-8de8-98ecb21917f0",
+		"name": "maumlab",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "20749805"
+	},
+	"item": [
+		{
+			"name": "survey",
+			"item": [
+				{
+					"name": "코드로 설문지 조회",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/surveys/:code/code",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"surveys",
+								":code",
+								"code"
+							],
+							"variable": [
+								{
+									"key": "code",
+									"value": "TRAVEL_A"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "아이디로 설문지 및 하위 모든 정보 조회",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/surveys/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"surveys",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "모든 설문지 조회",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:4000/surveys"
+					},
+					"response": []
+				},
+				{
+					"name": "설문지 생성",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"surveyCode\": \"TRAVEL_A\",\n    \"surveyName\": \"휴가 때 가고 싶은 해외여행\",\n    \"questions\": [\n        {\n            \"sequence\": 1,\n            \"content\": \"당신은 다가올 휴가 때 해외 여행을 희망하시나요?\",\n            \"choices\": [\n                {\n                    \"sequence\": 1,\n                    \"content\": \"예\",\n                    \"score\": 50\n                },\n                {\n                    \"sequence\": 2,\n                    \"content\": \"아니요(6번 문항으로 이동해 주십시오.)\",\n                    \"score\": 0\n                }\n            ]\n        },\n        {\n            \"sequence\": 2,\n            \"content\": \"당신이 희망하는 해외여행의 종류는?\",\n            \"choices\": [\n                {\n                    \"sequence\": 1,\n                    \"content\": \"패키지 여행\",\n                    \"score\": 10\n                },\n                {\n                    \"sequence\": 2,\n                    \"content\": \"자유여행\",\n                    \"score\": 30\n                },\n                {\n                    \"sequence\": 3,\n                    \"content\": \"테마여행\",\n                    \"score\": 20\n                }\n            ]\n        },\n        {\n            \"sequence\": 3,\n            \"content\": \"당신이 희망하는 여행지는?\",\n            \"choices\": [\n                {\n                    \"sequence\": 1,\n                    \"content\": \"동남아/대만/서남아\",\n                    \"score\": 20\n                },\n                {\n                    \"sequence\": 2,\n                    \"content\": \"중국/홍콩/극동러시아\",\n                    \"score\": 10\n                },\n                {\n                    \"sequence\": 3,\n                    \"content\": \"일본\",\n                    \"score\": 0\n                },\n                {\n                    \"sequence\": 4,\n                    \"content\": \"남태평양\",\n                    \"score\": 30\n                },\n                {\n                    \"sequence\": 5,\n                    \"content\": \"유럽/마프리카\",\n                    \"score\": 50\n                },\n                {\n                    \"sequence\": 6,\n                    \"content\": \"미주/중남미/하와이\",\n                    \"score\": 40\n                }\n            ]\n        },\n        {\n            \"sequence\": 4,\n            \"content\": \"당신이 생각하는 여행의 1인당 금애은? (쇼핑비용 제외)\",\n            \"choices\": [\n                {\n                    \"sequence\": 1,\n                    \"content\": \"100만원 미만\",\n                    \"score\": 10\n                },\n                {\n                    \"sequence\": 2,\n                    \"content\": \"100만원 이상 ~ 200만원 미만\",\n                    \"score\": 20\n                },\n                {\n                    \"sequence\": 3,\n                    \"content\": \"200만원 이상 ~ 300만원 미만\",\n                    \"score\": 30\n                },\n                {\n                    \"sequence\": 4,\n                    \"content\": \"300만원 이상 ~ 400만원 미만\",\n                    \"score\": 40\n                },\n                {\n                    \"sequence\": 5,\n                    \"content\": \"400만원 이상\",\n                    \"score\": 50\n                }\n            ]\n        },\n        {\n            \"sequence\": 5,\n            \"content\": \"당신이 해외 여행지를 선택할 때 고려하는 사항은? (중복응답가능)\",\n            \"choices\": [\n                {\n                    \"sequence\": 1,\n                    \"content\": \"기간\",\n                    \"score\": 0\n                },\n                {\n                    \"sequence\": 2,\n                    \"content\": \"비용\",\n                    \"score\": 10\n                },\n                {\n                    \"sequence\": 3,\n                    \"content\": \"치안\",\n                    \"score\": 20\n                },\n                {\n                    \"sequence\": 4,\n                    \"content\": \"여행목적\",\n                    \"score\": 30\n                },\n                {\n                    \"sequence\": 5,\n                    \"content\": \"음식\",\n                    \"score\": 40\n                },\n                {\n                    \"sequence\": 6,\n                    \"content\": \"쇼핑\",\n                    \"score\": 50\n                }\n            ]\n        },\n        {\n            \"sequence\": 6,\n            \"content\": \"당신은 국내여행 보다 해외여행을 선호하시나요?\",\n            \"choices\": [\n                {\n                    \"sequence\": 1,\n                    \"content\": \"매우 좋음\",\n                    \"score\": 40\n                },\n                {\n                    \"sequence\": 2,\n                    \"content\": \"좋음\",\n                    \"score\": 30\n                },\n                {\n                    \"sequence\": 3,\n                    \"content\": \"보통\",\n                    \"score\": 20\n                },\n                {\n                    \"sequence\": 4,\n                    \"content\": \"나쁨\",\n                    \"score\": 10\n                },\n                {\n                    \"sequence\": 5,\n                    \"content\": \"매우 나쁨\",\n                    \"score\": 0\n                }\n            ]\n        },\n        {\n            \"sequence\": 7,\n            \"content\": \"당신의 성별은?\",\n            \"choices\": [\n                {\n                    \"sequence\": 1,\n                    \"content\": \"남\",\n                    \"score\": 10\n                },\n                {\n                    \"sequence\": 2,\n                    \"content\": \"여\",\n                    \"score\": 10\n                }\n\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:4000/surveys"
+					},
+					"response": []
+				},
+				{
+					"name": "설문지 수정",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"surveyCode\": \"TRAVEL_A\",\n    \"surveyName\": \"휴가 때 가고 싶은 해외여행\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:4000/surveys/1"
+					},
+					"response": []
+				},
+				{
+					"name": "설문지 삭제 (하위 모든정보 포함 삭제)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/surveys/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"surveys",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "answer",
+			"item": [
+				{
+					"name": "아이디로 조회 (답변에 대한 총점 및 답변 확인)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/answers/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"answers",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "모든 답변 조회",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:4000/answers"
+					},
+					"response": []
+				},
+				{
+					"name": "답변 생성",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"surveyId\": 4,\n    \"answerItems\": [\n        {\n            \"questionId\": 24,\n            \"choiceId\": 93\n        },\n        {\n            \"questionId\": 25,\n            \"choiceId\": 96\n        },\n        {\n            \"questionId\": 26,\n            \"choiceId\": 102\n        },\n        {\n            \"questionId\": 27,\n            \"choiceId\": 108\n        },\n        {\n            \"questionId\": 28,\n            \"choiceId\": 112\n        },\n        {\n            \"questionId\": 28,\n            \"choiceId\": 113\n        },\n        {\n            \"questionId\": 29,\n            \"choiceId\": 115\n        },\n        {\n            \"questionId\": 30,\n            \"choiceId\": 120\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:4000/answers"
+					},
+					"response": []
+				},
+				{
+					"name": "답변 항목 수정",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"questionId\": 1,\n    \"choiceId\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/answers/:id/answer-item/:answerItemId",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"answers",
+								":id",
+								"answer-item",
+								":answerItemId"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								},
+								{
+									"key": "answerItemId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "답변 삭제",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/answers/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"answers",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "답변 항목 삭제 (설문지중 1개의 답변 삭제 시 사용)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/answers/:id/answer-item/:answerItemId",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"answers",
+								":id",
+								"answer-item",
+								":answerItemId"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								},
+								{
+									"key": "answerItemId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "question",
+			"item": [
+				{
+					"name": "아이디로 단건 조회",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/questions/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"questions",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "아이디로 단건 조회 (선택지 함께 조회)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/questions/:id/choice",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"questions",
+								":id",
+								"choice"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "문항 생성",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"surveyId\" : 3,\n    \"sequence\" : 8,\n    \"content\" : \"해외여행이 처음이신가요?\",\n    \"choices\" : [\n        {\n            \"sequence\": 1,\n            \"content\": \"예\",\n            \"score\": 20\n        },\n        {\n            \"sequence\": 2,\n            \"content\": \"아니오\",\n            \"score\": 10\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:4000/questions"
+					},
+					"response": []
+				},
+				{
+					"name": "문항 수정",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    // \"sequence\": 8,\n    \"content\": \"당신의 해외여행이 처음이신가요?\",\n    // \"choices\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/questions/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"questions",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "23"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "문항 삭제",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/questions/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"questions",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "choice",
+			"item": [
+				{
+					"name": "아이디로 조회",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/choices/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"choices",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "59"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "선택지 생성",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"questionId\": 7,\n    \"sequence\": 3,\n    \"content\": \"3번째 선택지 생성\",\n    \"score\": 100\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:4000/choices"
+					},
+					"response": []
+				},
+				{
+					"name": "아이디로 수정",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"sequence\": 3,\n    \"content\": \"선택지를 수정합니다.\",\n    \"score\": 50\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/choices/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"choices",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "아이디로 삭제",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/choices/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"choices",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

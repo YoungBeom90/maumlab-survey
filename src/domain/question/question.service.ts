@@ -23,6 +23,13 @@ export class QuestionService {
     return await this.questionRepository.findOneBy({ id });
   }
 
+  async findOneWithChildrenById(id: number) {
+    return await this.questionRepository.findOne({
+      relations: ['choices'],
+      where: { id },
+    });
+  }
+
   async save(question: Question) {
     try {
       await this.questionRepository.save(question);
@@ -55,10 +62,14 @@ export class QuestionService {
   }
 
   async deleteById(id: number) {
-    const question = await this.findOneById(id);
+    const question = await this.findOneWithChildrenById(id);
     precondition(question, HttpStatus.NOT_FOUND, 'Not found question by id');
 
     try {
+      if (question.choices && question.choices.length) {
+        await this.deleteAll([question]);
+        return;
+      }
       await this.questionRepository.remove(question);
     } catch (e) {
       if (e instanceof QueryFailedError) {

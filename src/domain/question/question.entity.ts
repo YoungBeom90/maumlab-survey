@@ -44,6 +44,9 @@ export class Question {
 
   static create(dto: CreateQuestionDto) {
     const entity = new Question();
+    if (dto.surveyId) {
+      entity.surveyId = dto.surveyId;
+    }
     entity.sequence = dto.sequence;
     entity.content = dto.content;
     if (dto.choices && dto.choices.length) {

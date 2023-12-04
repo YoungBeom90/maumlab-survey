@@ -43,6 +43,9 @@ export class Choice {
 
   static create(dto: CreateChoiceDto) {
     const entity = new Choice();
+    if (dto.questionId) {
+      entity.questionId = dto.questionId;
+    }
     entity.sequence = dto.sequence;
     entity.content = dto.content;
     entity.score = dto.score;

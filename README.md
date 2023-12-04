@@ -21,5 +21,9 @@ $ npm install
 $ npm run start
 ```
 
+## API Request (Postman)
+```
+Repository 내 maumlab.postman.json 파일 postman 에서 import 하여 테스트 진행
+```
 
 

@@ -18,6 +18,10 @@ import { isNil } from '@nestjs/common/utils/shared.utils';
 export class ChoiceController {
   constructor(private choiceService: ChoiceService) {}
 
+  /**
+   * 아이디로 조회
+   * @param id
+   */
   @Get(':id')
   async findOneById(@Param('id', ParseIntPipe) id: number) {
     const choice = await this.choiceService.findOneById(id);
@@ -25,11 +29,20 @@ export class ChoiceController {
     return ChoiceResponseDto.from(choice);
   }
 
+  /**
+   * 선택지 생성
+   * @param dto
+   */
   @Post()
   async create(@Body() dto: CreateChoiceDto) {
     await this.choiceService.create(dto);
   }
 
+  /**
+   * 아이디로 수정
+   * @param id
+   * @param dto
+   */
   @Patch(':id')
   async updateById(
     @Param('id', ParseIntPipe) id: number,
@@ -38,6 +51,10 @@ export class ChoiceController {
     await this.choiceService.updateById(id, dto);
   }
 
+  /**
+   * 아이디로 삭제
+   * @param id
+   */
   @Delete(':id')
   async deleteById(@Param('id') id: number) {
     await this.choiceService.deleteById(id);
