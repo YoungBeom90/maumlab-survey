@@ -2,8 +2,8 @@
 /dist
 /node_modules
 
-#Docker PostgresQL data
-./data
+# Docker PostgresQL data
+/data
 
 # Logs
 logs
